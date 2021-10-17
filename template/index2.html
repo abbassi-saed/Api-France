@@ -1,0 +1,173 @@
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet"href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+
+<section class="py-1 bg-blueGray-50">
+
+  <div class="w-full  mb-12 xl:mb-0 px-4 mx-auto mt-10">
+      <form action="/house" method="post">
+          {% csrf_token %}
+          <div class=" space-y-2">
+            <input id="default" type="text" name="code_commune" placeholder="Code Commune"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none mr-4 mt-3 mb-3 focus:ring-2 focus:ring-gray-200" />
+
+            <input id="default" type="text" name="section" placeholder="Section"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none mr-4 mt-3 mb-3 focus:ring-2 focus:ring-gray-200" />
+
+            <input id="default" type="text" name="nature_mutation" placeholder="Nature Mutation"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none mr-4 mt-3 mb-3 focus:ring-2 focus:ring-gray-200" />
+
+            <input id="default" type="text" name="code_postal" placeholder="Code postal"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none mr-4 mt-3 mb-3 focus:ring-2 focus:ring-gray-200" />
+
+              <input id="default" type="text" name="numero_voie" placeholder="Numero voie"
+               class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none mr-4 mt-3 mb-3 focus:ring-2 focus:ring-gray-200" />
+
+              <input id="default" type="text" name="voie" placeholder="Voie"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none mr-4 mt-3 mb-3 focus:ring-2 focus:ring-gray-200" />
+
+            <input id="default" type="text" name="type_local" placeholder="Type Local"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none mr-4 mt-3 mb-3 focus:ring-2 focus:ring-gray-200" />
+              <button type="submit" class="rounded text-gray-100 px-6 py-2 bg-yellow-500 shadow-md
+              hover:shadow-inner hover:bg-red-600 transition-all m-4  justify-self-
+              end absolute right-0 filter drop-shadow-lg">
+                <i class="fas fa-search"></i>
+              </button>
+          </div>
+
+      </form>
+    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+
+
+      <div class="block w-full overflow-x-auto">
+        <table class="items-center bg-transparent w-full border-collapse ">
+          <thead>
+
+            <tr>
+
+             <!-- <th
+                class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                Nature mutation
+              </th> -->
+              <th
+                  class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  Dt mutation
+              </th>
+
+              <th
+                class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                Val fon
+              </th>
+              <th
+                class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                N voie
+              </th>
+              <th
+                class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                 voie
+              </th>
+              <th
+                class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                c postal
+              </th>
+              <th
+                class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              commune
+              </th>
+              <th
+                  class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              ty local
+              </th>
+              <th
+                class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              surf bati
+              </th>
+              <th
+                class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              surf terr
+             </th>
+             <th
+                class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              val fonc/surf bati
+             </th>
+             <th
+                class="px-6 bg-yellow-500 text-black align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+               val fonc/surf TERR
+             </th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+          {% for i in page_obj %}
+            <tr>
+                           <!-- <th
+
+              <th
+                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                {{i.nature_mutation}}
+              </th> -->
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+              {{i.date_mutation}}
+              </td>
+              <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+               {{i.valeur_fonciere}}
+              </td>
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+
+                {{i.numero_voie}}
+              </td>
+
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+
+               {{i.voie}}
+              </td>
+
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+
+                {{i.code_postal}}
+              </td>
+
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+
+                {{i.commune}}
+              </td>
+
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+
+               {{i.type_local}}
+              </td>
+
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+
+               {{i.surface_relle_bati}}
+              </td>
+
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+
+                {{i.surface_terrain}}
+              </td>
+                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                  {% widthratio i.valeur_fonciere i.surface_relle_bati 1 %}
+              </td>
+                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                  {% widthratio i.valeur_fonciere i.surface_terrain 1 %}
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer class="relative pt-8 pb-6 mt-16">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap items-center md:justify-between justify-center">
+        <div class="w-full md:w-6/12 px-4 mx-auto text-center">
+          <div class="text-sm text-blueGray-500 font-semibold py-1">
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>

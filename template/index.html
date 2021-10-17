@@ -6,11 +6,42 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-<table calss="table">
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">numero_disposition</th>
+        <th scope="col">nature_mutation</th>
+        <th scope="col">valeur_fonciere</th>
+        <th scope="col">numero_voie</th>
+        <th scope="col">commune</th>
+        <th scope="col">code_departement</th>
+        <th scope="col">date_mutation</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in page_obj %}
+    <tr>
+        <td>{{i.numero_disposition}}</td>
+        <td>{{i.nature_mutation}}</td>
+        <td>{{i.valeur_fonciere}}</td>
+        <td>{{i.numero_voie}}</td>
+        <td>{{i.commune}}</td>
+        <td>{{i.code_departement}}</td>
+        <td>{{i.date_mutation}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
+
+
+<!--<table calss="table">
     <th  scope="col">numero_disposition</th>
     <th  scope="col">nature_mutation</th>
     <th  scope="col">valeur_fonciere</th>
@@ -45,6 +76,4 @@
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
-</div>
-</body>
-</html>
+</div> -->
