@@ -8,16 +8,18 @@ from django.http import HttpResponse
 from .forms import Filter
 
 def list_houses(request):
-
-    val = request.POST.dict()
-    print(val)
-    test =  request.POST.get("code_commune")
-    apiUrl = f"http://api.cquest.org/dvf?code_commune=89304"
+    api = "http://api.cquest.org/dvf?"
+    val = request.POST
     for k, v in val.items():
-        apiUrl =f"?{k}={v}".join(apiUrl)
-    print(apiUrl)
-    data = requests.get(apiUrl).json()
-    paginator = Paginator(data['resultats'], 20000)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, "index2.html", {'page_obj': page_obj,'form':Filter})
+        if v and not k == "csrfmiddlewaretoken":
+            print(k)
+            api=f"{api}{k}={v}&"
+    print(api)
+    apiUrl = f"http://api.cquest.org/dvf?code_commune=89304"
+    data = requests.get(api).json()
+    if not data.get("erreur"):
+        paginator = Paginator(data['resultats'], 50000000000)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, "index2.html", {'page_obj': page_obj,'form':val.dict()})
+    return render(request, "index2.html")
