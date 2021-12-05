@@ -21,5 +21,6 @@ def list_houses(request):
         paginator = Paginator(data['resultats'], 50000000000)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
-        return render(request, "index2.html", {'page_obj': page_obj,'form':val.dict()})
+        moy = page_obj.valeur_fonciere / page_obj.surface_relle_bati
+        return render(request, "index2.html", {'page_obj': page_obj, 'moy': moy, 'form': val.dict()})
     return render(request, "index2.html")
